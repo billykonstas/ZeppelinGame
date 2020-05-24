@@ -151,7 +151,7 @@ class MyScene extends CGFscene {
 
         //Shaders initialization
         this.shader1 = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
-        this.shader1.setUniformsValues({ uSampler2: 1 });
+        //this.shader1.setUniformsValues({ uSampler2: 1 });
 
         this.shader2 = new CGFshader(this.gl, "shaders/flag.vert", "shaders/flag.frag");
 
