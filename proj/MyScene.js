@@ -150,12 +150,12 @@ class MyScene extends CGFscene {
         this.skybox.setTextureWrap('REPEAT', 'REPEAT');
 
         //Shaders initialization
-        this.shader1 = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
-        //this.shader1.setUniformsValues({ uSampler2: 1 });
+        this.shader1 = new CGFshader(this.gl, "../proj/shaders/terrain.vert", "../proj/shaders/terrain.frag");
+        this.shader1.setUniformsValues({ uSampler2: 1 });
 
-        this.shader2 = new CGFshader(this.gl, "shaders/flag.vert", "shaders/flag.frag");
+        this.shader2 = new CGFshader(this.gl, "../proj/shaders/flag.vert", "../proj/shaders/flag.frag");
 
-        this.shader3 = new CGFshader(this.gl, "shaders/billboard.vert", "shaders/billboard.frag");
+        this.shader3 = new CGFshader(this.gl, "../proj/shaders/billboard.vert", "../proj/shaders/billboard.frag");
 
         //Objects connected to MyInterface
         this.displayAxis = true;
