@@ -38,7 +38,6 @@ class MyBillboard extends CGFobject {
         this.scene.rotate(90*(Math.PI/180),1,0,0);
         this.scene.translate(1,0,0);
         this.scene.billLegMat.apply();
-        this.scene.changefiltering();
         this.scene.square.display();
         this.scene.popMatrix();
 

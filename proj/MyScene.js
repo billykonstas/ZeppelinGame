@@ -11,6 +11,9 @@ class MyScene extends CGFscene {
         this.initCameras();
         this.initLights();
 
+        //Instruction for the game
+        window.alert('Game Controls:\n W -> Increase Speed\n S -> Decrease Speed\n D -> Rotate Clockwise\n A -> Rotate Anticlockwise\n R-> Restart\n L -> Drop Supplies\n P -> Autopilot Mode');
+
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -31,7 +34,6 @@ class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this,6);
         this.cube = new MyUnitCube(this);
         this.vehicle = new MyVehicle(this);
-        this.diamond = new MyDiamond(this);
         this.square = new MySquare(this);
         this.triangle = new MyTriangle(this);
         this.wing = new MyWing(this);
@@ -136,9 +138,10 @@ class MyScene extends CGFscene {
         this.texture2 = new CGFtexture(this, 'images/cubemap2.png'); //Second skybox texture
         this.texture3 = new CGFtexture(this, 'images/terrain_new.jpg'); //Terrain texture
         this.texture4 = new CGFtexture(this, "images/heightmap_new.jpg"); //Terrain heightmap
-        
-        this.textures = [this.texture1, this.texture2];
-        this.textureIds = { 'Skybox': 0, 'Night': 1 };
+        this.texture5 = new CGFtexture(this, "images/sunset.png"); //Third skybox texture
+
+        this.textures = [this.texture1, this.texture2, this.texture5];
+        this.textureIds = { 'Skybox': 0, 'Night': 1 ,'Sunset': 2};
         this.selectedTexture = 0;
 
         this.terrainMat.setTexture(this.texture3);
@@ -159,7 +162,6 @@ class MyScene extends CGFscene {
         this.displayNormals = false;
         this.speedFactor=1.0; //Speed controller at the interface
         this.vehicleScaleFactor = 1.0; //Scaler of the vehicle at the interface
-        
 
     }
     initLights() {
@@ -169,7 +171,7 @@ class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.7, 0.1, 400, vec3.fromValues(19, 17, 17), vec3.fromValues(1, 5, 0));
+        this.camera = new CGFcamera(0.7, 0.1, 400, vec3.fromValues(15, 17, 15), vec3.fromValues(1, 5, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -300,11 +302,6 @@ class MyScene extends CGFscene {
         this.billboard.update(); //Calls billboard update, responsible to pass nSuppliesDelivered to shader
     }
 
-    changefiltering()
-    {
-    this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-    }
-
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -328,7 +325,7 @@ class MyScene extends CGFscene {
         /*
         //Cylinder Display 1.1
         this.pushMatrix();
-        this.earthMaterial.apply();
+        this.zeppelinMat.apply();
         this.cylinder.display();
         this.popMatrix();
         */
@@ -338,10 +335,9 @@ class MyScene extends CGFscene {
         this.scale(this.vehicleScaleFactor, this.vehicleScaleFactor, this.vehicleScaleFactor);
         this.earthMaterial.apply();
         this.sphere.display();
-        //this.sphere.enableNormalViz();
         */
 
-
+        
         //Skybox Display 1.3
         this.pushMatrix();
         this.scale(this.skyboxScaleFactor,this.skyboxScaleFactor,this.skyboxScaleFactor); //Scaling skybox to be 50 units

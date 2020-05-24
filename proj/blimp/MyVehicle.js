@@ -68,6 +68,8 @@ class MyVehicle extends CGFobject {
         this.scene.wing.turnCoords=[0,0,0];
         this.scene.wing.turnAng=0;
         this.lastUpdate=0;
+        this.lastAuto=0; //Last time visited the autopilot function
+        this.fullCircle=false; //Flag for printing the time of a circle in autopilot
     }
 
     autopilot(t)
@@ -75,7 +77,7 @@ class MyVehicle extends CGFobject {
         if(this.autopilotMode==false) //When autopilot is firstly called
         {
             this.autopilotMode=true; 
-            console.log('Autopilot Mode!');
+            console.log('Autopilot Mode Initialised!');
             if (this.timerOn==false)
             {
                 this.timerOn=true; 
@@ -89,10 +91,9 @@ class MyVehicle extends CGFobject {
             this.startingAngleXX = Math.atan2(this.position[2] - 0, -this.position[0] - 0) * 180 / Math.PI; //Angle from the XX axis
             if (this.startingAngleXX<0)
                 this.startingAngleXX=270-this.startingAngleXX; //For example Angle -90 becomes 270
-            console.log('Angle: ' + this.startingAngleXX);
             this.angleXX=this.startingAngleXX; //The initial angle
             
-            this.angleΥY-=(90+this.angleΥY)*Math.sin(this.angleΥY+90*(Math.PI/180)); //Make the blimp tangent to the circle --works only for 0 angleYY--
+            this.angleΥY+=(270-this.angleΥY); //Make the blimp tangent to the circle
         }
     	else //Autopilot already operating
         {
@@ -106,14 +107,13 @@ class MyVehicle extends CGFobject {
             {
                 this.fullCircle=true;
                 var elapsedTime=t-this.timer; //Counter for the complete circle
-                console.log('Circle completed at: '+elapsedTime+' milliseconds!');
+                console.log('Circle completed at: '+elapsedTime+' ms');
             }
             
-            this.angleXX+=this.angleAdder*(elapsedTime2/1000);
-            //About how the circle is drawn  https://gamedev.stackexchange.com/questions/9607/moving-an-object-in-a-circular-path
+            this.angleXX+=this.angleAdder*(elapsedTime2/1000); //Increases the angle to turn
             this.position[0]= this.autopilotCenter[0] + 5 * Math.sin((this.angleXX+(180-this.startingAngleXX)) * (Math.PI/180)); //Moving in a circular motion
             this.position[2]= this.autopilotCenter[2] + 5 * Math.cos((this.angleXX+(180-this.startingAngleXX)) * (Math.PI/180)); //Moving in a circular motion
-            this.turn(this.angleAdder*(elapsedTime2/1000));
+            this.turn(this.angleAdder*(elapsedTime2/1000)); //Turns the blimp to keep it tangent to the circle
         }    
     }
 
