@@ -59,7 +59,7 @@ class MyScene extends CGFscene {
         this.earthMaterial.setDiffuse(9, 9, 9, 1);
         this.earthMaterial.setSpecular(1, 1, 1, 1);
         this.earthMaterial.setShininess(10.0);
-        this.earthMaterial.loadTexture('images/earth.jpg');
+        this.earthMaterial.loadTexture('../proj/images/earth.jpg');
         this.earthMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Skybox Material
@@ -89,7 +89,7 @@ class MyScene extends CGFscene {
         this.zeppelinMat3.setDiffuse(0, 0, 0, 0.0);
         this.zeppelinMat3.setSpecular(0, 0, 0, 0.0);
         this.zeppelinMat3.setShininess(10.0); 
-        this.zeppelinMat3.loadTexture('images/gradient.png');
+        this.zeppelinMat3.loadTexture('../proj/images/gradient.png');
         this.zeppelinMat3.setTextureWrap('REPEAT', 'REPEAT');
 
         //Terrain Material
@@ -105,7 +105,7 @@ class MyScene extends CGFscene {
         this.supplyMat.setDiffuse(9, 9, 9, 1);
         this.supplyMat.setSpecular(1, 1, 1, 1);
         this.supplyMat.setShininess(10.0);
-        this.supplyMat.loadTexture('images/crate.jpg');
+        this.supplyMat.loadTexture('../proj/images/crate.jpg');
         this.supplyMat.setTextureWrap('REPEAT', 'REPEAT');
 
         //Billboard Material
@@ -114,7 +114,7 @@ class MyScene extends CGFscene {
         this.billMat.setDiffuse(9, 9, 9, 1);
         this.billMat.setSpecular(1, 1, 1, 1);
         this.billMat.setShininess(5.0);
-        this.billMat.loadTexture('images/billboard.png');
+        this.billMat.loadTexture('../proj/images/billboard.png');
         this.billMat.setTextureWrap('REPEAT', 'REPEAT');        
 
         //Billboard Leg Material
@@ -130,15 +130,15 @@ class MyScene extends CGFscene {
         this.flagMat.setDiffuse(9, 9, 9, 1);
         this.flagMat.setSpecular(1, 1, 1, 1);
         this.flagMat.setShininess(5.0);
-        this.flagMat.loadTexture('images/FEUP.jpg');
+        this.flagMat.loadTexture('../proj/images/FEUP.jpg');
         this.flagMat.setTextureWrap('REPEAT', 'REPEAT');
 
         //Textures
-        this.texture1 = new CGFtexture(this, 'images/cubemap.png'); //The initial skybox texture
-        this.texture2 = new CGFtexture(this, 'images/cubemap2.png'); //Second skybox texture
-        this.texture3 = new CGFtexture(this, 'images/terrain_new.jpg'); //Terrain texture
-        this.texture4 = new CGFtexture(this, "images/heightmap_new.jpg"); //Terrain heightmap
-        this.texture5 = new CGFtexture(this, "images/sunset.png"); //Third skybox texture
+        this.texture1 = new CGFtexture(this, '../proj/images/cubemap.png'); //The initial skybox texture
+        this.texture2 = new CGFtexture(this, '../proj/images/cubemap2.png'); //Second skybox texture
+        this.texture3 = new CGFtexture(this, '../proj/images/terrain_new.jpg'); //Terrain texture
+        this.texture4 = new CGFtexture(this, '../proj/images/heightmap_new.jpg'); //Terrain heightmap
+        this.texture5 = new CGFtexture(this, '../proj/images/sunset.png'); //Third skybox texture
 
         this.textures = [this.texture1, this.texture2, this.texture5];
         this.textureIds = { 'Skybox': 0, 'Night': 1 ,'Sunset': 2};
