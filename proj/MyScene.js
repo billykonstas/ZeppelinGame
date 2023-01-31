@@ -89,7 +89,7 @@ class MyScene extends CGFscene {
         this.zeppelinMat3.setDiffuse(0, 0, 0, 0.0);
         this.zeppelinMat3.setSpecular(0, 0, 0, 0.0);
         this.zeppelinMat3.setShininess(10.0); 
-        //this.zeppelinMat3.loadTexture('../ZeppelinGame/proj/images/gradient.png');
+        this.zeppelinMat3.loadTexture('../ZeppelinGame/proj/images/gradient.png');
         this.zeppelinMat3.setTextureWrap('REPEAT', 'REPEAT');
 
         //Terrain Material
